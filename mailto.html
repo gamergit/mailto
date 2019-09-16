@@ -180,6 +180,10 @@ $(function() {
     target.select();
     document.execCommand('Copy');
   });
+
+  $('#code').focus(function() {
+    this.select();
+  });
 });
     </script>
   </body>
