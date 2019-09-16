@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <style type="text/css">
+.w-to { width: 3em; }
+    </style>
+
+    <title>mailto Generator</title>
+  </head>
+  <body>
+    <div class="container">
+<div class="px-3 py-3 pt-5 pb-4 mx-auto text-center">
+  <h1 class="display-5"><i class="fas fa-paper-plane"></i> mailto Generator</h1>
+</div>
+<div class="form-group row">
+  <label class="col-2 col-form-label">Mail address</label>
+  <div class="col-10">
+    <div id="mail">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><span class="w-to">to</span></span>
+        </div>
+        <input type="email" class="form-control" data-send-by="to">
+      </div>
+    </div>
+    <div>
+      <button id="button-to" type="button" class="btn btn-sm btn-light mr-1" data-send-by="to"><i class="fas fa-plus-circle"></i> to</button>
+      <button id="button-cc" type="button" class="btn btn-sm btn-light mr-1" data-send-by="cc"><i class="fas fa-plus-circle"></i> cc</button>
+      <button id="button-bcc" type="button" class="btn btn-sm btn-light" data-send-by="bcc"><i class="fas fa-plus-circle"></i> bcc</button>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="subject" class="col-2 col-form-label">Subject</label>
+  <div class="col-10">
+    <div class="input-group">
+      <input id="subject" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <label for="body" class="col-2 col-form-label">Body</label>
+  <div class="col-10">
+    <div class="input-group">
+      <textarea id="body" class="form-control" rows="8"></textarea>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-2 col-form-label">Separator</label>
+  <div class="col-10">
+    <div class="input-group">
+      <div id="separator" class="btn-group btn-group-sm btn-group-toggle w-100" data-toggle="buttons">
+        <label class="btn btn-outline-secondary active">
+          <input type="radio" name="separator" value="," autocomplete="off" checked> <span class="badge badge-dark">,</span> Comma
+        </label>
+        <label class="btn btn-outline-secondary">
+          <input type="radio" name="separator" value=";" autocomplete="off"> <span class="badge badge-dark">;</span> Semicolon (for Outlook)
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col">
+    <div class="float-right">
+      <button id="submit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#mailto"><i class="fas fa-check"></i> Submit</button>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer">
+    <p class="text-light" align="center">Copyright ©2019 Takeshi Nakamura. All rights reserved.</p>
+  </div>
+</footer>
+    </div><!-- .container -->
+
+<!-- Modal -->
+<div class="modal fade" id="mailto" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">mailto:</h5>
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="input-group mb-3">
+              <textarea id="code" class="form-control" rows="5" readonly></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button id="copy" type="button" class="btn btn-sm btn-light mr-1"><i class="fas fa-clipboard"></i> Copy to clipboard</button>
+            <a id="link" class="btn btn-sm btn-light" href=""><i class="fas fa-link"></i> Open link</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div><!-- .model -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+$(function() {
+  $('#button-to, #button-cc, #button-bcc').on('click', function() {
+    var by = $(this).data('sendBy');
+    var base = $('#mail').children('div').first().clone();
+
+    base.find('.w-to').text(by);
+    base.find('input').val('').data('sendBy', by);
+
+    var btn = $('<button class="btn btn-outline-secondary" type="button"><i class="fas fa-trash"></i></button>');
+
+    btn.click(function() {
+      base.remove();
+    });
+
+    var ctrl = $('<div class="input-group-append"></div>');
+
+    ctrl.append(btn);
+    base.append(ctrl);
+
+    $('#mail').append(base);
+  });
+
+  $('#submit').on('click', function() {
+    var sep = $('#separator input[name="separator"]:checked').val();
+
+    var sendTo = {to: [], cc: [], bcc: []};
+
+    $('#mail input').each(function() {
+      var by = $(this).data('sendBy');
+      var mail = $(this).val();
+
+      if (mail) sendTo[by].push(mail);
+    });
+
+    var content = {};
+
+    content['subject'] = $('#subject').val();
+    content['body'] = $('#body').val();
+
+    var option = [];
+
+    ['cc', 'bcc'].forEach(function(by) {
+      if (sendTo[by].length > 0) option.push(by + '=' + sendTo[by].join(sep));
+    });
+
+    ['subject', 'body'].forEach(function(x) {
+      if (content[x]) option.push(x + '=' + encodeURIComponent(content[x]));
+    });
+
+    var mailto = 'mailto:' + sendTo['to'].join(sep) +
+        ((option.length > 0) ? '?' + option.join('&') : '');
+
+    $('#code').text(mailto);
+    $('#link').attr('href', mailto);
+  });
+
+  $('#copy').on('click', function() {
+    var target = document.getElementById('code');
+
+    target.select();
+    document.execCommand('Copy');
+  });
+});
+    </script>
+  </body>
+</html>
